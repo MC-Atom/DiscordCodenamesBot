@@ -1,9 +1,7 @@
-import asyncio
 import random
 import discord
 from time import sleep
 from PIL import Image, ImageDraw, ImageFont
-import csv
 
 from discord import channel
 
@@ -287,6 +285,7 @@ def react(message,emojiName):
 
 #Discord
 #https://discord.com/api/oauth2/authorize?client_id=1143743595032084551&permissions=8&scope=bot
+#https://discord.com/api/oauth2/authorize?client_id=1143743595032084551&permissions=40666961279040&scope=bot
 
 TOKEN = ''
 
