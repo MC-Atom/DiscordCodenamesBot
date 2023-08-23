@@ -10,4 +10,4 @@ Commands:
 `!Start [@user] [@user] ...  ` Start a game and send the answer key to the mentioned users
 `!SendKey [@user] [@user] ...` Send the answer key to the mentioned users
 `!Go [a-e]#                  ` Guess the given space (ie: `!Go e3`)
-`!Reveal ... ` Reveal the full board
+`!Reveal                     ` Reveal the full board
