@@ -311,7 +311,7 @@ async def on_message(message):
 `!Start [@user] [@user] ...   ` Start a game and send the answer key to the mentioned users
 `!SendKey [@user] [@user] ... ` Send the answer key to the mentioned users
 `!Go [a-e]#                   ` Guess the given space (ie: `!Go e3`)
-`!Reveal [@user] [@user] ...  ` Reveal the full board""")
+`!Reveal ...  ` Reveal the full board""")
 
     # maybe add a way of deleting one off the top of a stack      
 
