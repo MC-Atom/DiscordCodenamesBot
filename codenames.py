@@ -219,26 +219,6 @@ def drawTile(matricies,tile):
         color = (0,0,0)
     img.text((x,y),word,font = fnt,fill = color)
     writeImage('board.png',draw)
-    
-
-
-async def checkIfAllowed(message,id=-1):
-    allowedRolls = [860601028096557068,513018801802051606] # Admin role and something else
-
-    author = await getUserById(message.author.id,message)
-
-    for role in author.roles:
-        if role.id in allowedRolls:
-            return True
-
-    if author.id == 244538654733631488: # Adding an overide for me (MC_Atom)
-        return True
-    
-    if id != -1:
-        claimer = await getUserById(id,message)
-        if author == claimer:
-            return True
-    return False
 
 async def getMessageById(id,channelList):
     if id == "-1":
@@ -251,21 +231,6 @@ async def getMessageById(id,channelList):
             except discord.errors.NotFound:
                 print("Not Found")
                 return -1
-                        
-async def getUserById(id,message):
-    user = -1
-    try:
-        member = await message.guild.fetch_member(id)
-    except discord.errors.NotFound:
-         return -1
-    return member
-
-async def getNickById(id,message):
-    user = await getUserById(id,message)
-    if user == -1:
-        return -1
-    else:
-        return user.display_name
 
 def reveal(matricies,tileString):
     tile = interpretString(tileString)
@@ -299,8 +264,6 @@ matrices = []
 @client.event #-----------------------------------------client.event------------------------
 
 async def on_message(message):
-    audioList = ['.wav','.ogg','.mp3','.mp4','webm','flac','.m4a']
-    midiList = ['.mid','midi']
     
     global matrices
 
@@ -313,12 +276,12 @@ async def on_message(message):
             await person.dm_channel.send(file=discord.File('boardColor.png'))
         await message.channel.send(file=discord.File('board.png'))
 
-    if message.content.upper().startswith('!SEND'):
+    if message.content.upper().startswith('!SENDKEY'):
         mentioned = message.mentions
         for person in mentioned:
             if person.dm_channel == None:
                 await person.create_dm()
-            await person.dm_channel.send(file=discord.File('board.png'))
+            await person.dm_channel.send(file=discord.File('boardColor.png'))
         await message.channel.send("Board Sent")
 
     if message.content.upper().startswith('!GO'):
@@ -341,10 +304,11 @@ async def on_message(message):
         await message.channel.send('no u')
 
     if message.content.upper().startswith('!HELP'):
-        await message.channel.send("""`!Start [@user] [@user] ...` Start a game and send the answer key to the mentioned users
-`!Send [@user] [@user] ...` Send the answer key to the mentioned users
-`!Go [a-e]#` Guess the given space (ie: `!Go e3`)
-`!Reveal [@user] [@user] ...` Reveal the full board""")
+        await message.channel.send("""
+`!Start [@user] [@user] ...   ` Start a game and send the answer key to the mentioned users
+`!SendKey [@user] [@user] ... ` Send the answer key to the mentioned users
+`!Go [a-e]#                   ` Guess the given space (ie: `!Go e3`)
+`!Reveal [@user] [@user] ...  ` Reveal the full board""")
 
     # maybe add a way of deleting one off the top of a stack      
 
