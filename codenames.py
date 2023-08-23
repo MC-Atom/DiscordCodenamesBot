@@ -38,7 +38,7 @@ def pickWords():
             if chosenWord in wordsMatrixList:
                 sameWord = True
 
-            if len(chosenWord) <= 10 or sameWord != True:
+            if len(chosenWord) <= 10 and sameWord != True:
                 wordsMatrixList.append(chosenWord)
             else:
                 x -= 1
