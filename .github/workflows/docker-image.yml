@@ -46,5 +46,5 @@ jobs:
         with:
           context: .
           push: true
-          tags:  ${{ steps.gethash.outputs.sha_short }},latest
+          tags:  ${{ steps.meta.outputs.images }}:${{ steps.gethash.outputs.sha_short }},${{ steps.meta.outputs.images }}:latest
           labels: ${{ steps.meta.outputs.labels }}
