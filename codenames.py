@@ -298,7 +298,6 @@ matrices = []
 
 @client.event #-----------------------------------------client.event------------------------
 
-
 async def on_message(message):
     audioList = ['.wav','.ogg','.mp3','.mp4','webm','flac','.m4a']
     midiList = ['.mid','midi']
@@ -340,6 +339,12 @@ async def on_message(message):
 
     if message.content.upper().startswith('NO U') and message.author != client.user:
         await message.channel.send('no u')
+
+    if message.content.upper().startswith('!HELP'):
+        await message.channel.send("""`!Start [@user] [@user] ...` Start a game and send the answer key to the mentioned users
+`!Send [@user] [@user] ...` Send the answer key to the mentioned users
+`!Go [a-e]#` Guess the given space (ie: `!Go e3`)
+`!Reveal [@user] [@user] ...` Reveal the full board""")
 
     # maybe add a way of deleting one off the top of a stack      
 
