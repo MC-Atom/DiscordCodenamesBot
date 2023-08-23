@@ -4,7 +4,8 @@ FROM python:3.9.13-alpine
 RUN pip install discord
 RUN pip install pillow
 
-# Install font
+# Install font 
+RUN apk add fontconfig
 RUN mkdir -p ~/.fonts
 RUN wget https://www.dafontfree.co/wp-content/uploads/2022/02/Ink-Free-Font.zip
 RUN unzip -d ~/.fonts Ink-Free-Font.zip && rm Ink-Free-Font.zip
