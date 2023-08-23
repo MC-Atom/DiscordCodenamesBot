@@ -43,5 +43,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }},latest
+          tags: $(git rev-parse --short "$GITHUB_SHA"),latest
+          labels: ${{ steps.meta.outputs.labels }}
