@@ -2,6 +2,7 @@ import random
 import discord
 from time import sleep
 from PIL import Image, ImageDraw, ImageFont
+import os
 
 from discord import channel
 
@@ -252,7 +253,9 @@ def react(message,emojiName):
 #https://discord.com/api/oauth2/authorize?client_id=1143743595032084551&permissions=8&scope=bot
 #https://discord.com/api/oauth2/authorize?client_id=1143743595032084551&permissions=40666961279040&scope=bot
 
-TOKEN = ''
+TOKEN = os.environ['BOT_TOKEN']
+
+print(TOKEN)
 
 intents = discord.Intents.default()
 intents.message_content = True
